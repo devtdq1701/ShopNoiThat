@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Model.EF.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section css{
+    <link href="~/Assets/Admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+}
+@section js{
+    <script src="/Assets/Admin/js/productController.js"></script>
+    <!-- Page level plugins -->
+    <script src="~/Assets/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="~/Assets/Admin/js/demo/datatables-demo.js"></script>
+    <script type="text/javascript">
+        function remove() {
+            var $tr = $(this).closest('tr');
+            $tr.remove();
+            location.reload();
+        }
+    </script>
+}
+    <p>
+        @Html.ActionLink("Tạo mới", "Create", null, new { @class = "btn btn-success btn-icon-split btn-padding" })
+    </p>
+<div class="card mb-4">
+    <div class="card-header">Danh sách sản phẩm</div>
+    <div class="card-body">
+        <div class="datatable">
+            <table class="table table-bordered table-hover dataTable" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Quantity)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ViewCount)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Quantity)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ViewCount)
+                        </th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a href="/Admin/Products/Details/@item.ID">@Html.DisplayFor(modelItem => item.Title)</a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ViewCount)
+                            </td>
+                            <td style="display:flex">
+                                <a href="#" class="btn-images btn btn-primary rounded-0" data-id="@item.ID"><i class="fal fa-images"></i></a>
+                                <a class="btn btn-success btn-sm rounded-0" href="/Admin/Products/Edit/@item.ID"><i class="fa fa-edit"></i></a> |
+                                <a class="btn btn-danger btn-sm rounded-0" data-ajax="true" data-ajax-complete="remove" data-ajax-confirm="Bạn có muốn xoá bản ghi này ?" data-ajax-method="Delete" href="/Admin/Products/Delete/@item.ID"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Large modal -->
+<div id="imageManager" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="imageList">
+
+                </div>
+                <div class="clear"></div>
+                <button type="button" class="btn btn-primary" id="btnChooseImages" style="position: absolute;bottom: -56px;left: 20px;">Chọn ảnh</button>
+                <input type="hidden" id="hidProductID" value="0" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnSaveImages">Lưu</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+
+    </div>
+</div>

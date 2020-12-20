@@ -1,0 +1,60 @@
+﻿@model Model.EF.Member
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@section css{
+    <style>
+        .img-custom {
+            width: 200px;
+        }
+    </style>
+}
+@section header{
+    Chi tiết thành viên @Model.Name
+}
+
+<div>
+    <hr />
+    <table class="table table-striped">
+        <tr>
+            <th scope="row">@Html.DisplayNameFor(model => model.Name)</th>
+            <td>@Html.DisplayFor(model => model.Name)</td>
+        </tr>
+        <tr>
+            <th scope="row">@Html.DisplayNameFor(model => model.Slogan)</th>
+            <td>@Html.DisplayFor(model => model.Slogan)</td>
+        </tr>
+        <tr>
+            <th scope="row">@Html.DisplayNameFor(model => model.Job)</th>
+            <td>@Html.DisplayFor(model => model.Job)</td>
+        </tr>
+        <tr>
+            <th scope="row">@Html.DisplayNameFor(model => model.Avatar)</th>
+            <td><img class="img-fluid img-custom" src="@Html.DisplayFor(model => model.Avatar)" alt=""></td>
+        </tr>
+        <tr>
+            <th scope="row">@Html.DisplayNameFor(model => model.Status)</th>
+            <td>
+                @{
+                    if (Model.Status == true)
+                    {
+                        <span class="badge badge-pill badge-success">Đang hoạt động</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-pill badge-danger">Đã nghỉ</span>
+                    }
+                }
+            </td>
+        </tr>
+    </table>
+    <hr />
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", null, new { id = Model.ID }, new { @class = "btn btn-primary btn-icon-split btn-padding" }) |
+    @Html.ActionLink("Trở lại", "Index", null, new { @class = "btn btn-secondary btn-icon-split btn-padding" })
+</p>

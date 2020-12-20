@@ -1,0 +1,18 @@
+﻿@model List<Model.EF.Logo>
+<div class="container logo-item product">
+    <div class="text-center bor-bt">
+        <ul class="nav nav-pills">
+            <li class="active"><a data-toggle="pill" href="/">Các thương hiệu thuộc TCT GROUP</a></li>
+        </ul>
+    </div>
+    <div class="banner-item slider">
+        @foreach (var item in Model)
+        {
+            <div class="item">
+                <a title="@item.Title">
+                    <img src="@item.Image" alt="@item.Title" title="@item.Title" class="delay">
+                </a>
+            </div>
+        }
+    </div>
+</div>

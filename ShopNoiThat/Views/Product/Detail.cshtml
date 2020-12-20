@@ -1,0 +1,479 @@
+﻿@model Model.EF.Product
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var sameProducts = (List<Model.EF.Product>)ViewBag.SameProducts;
+}
+@section title{
+    <title>@Model.Title</title>
+}
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="main-content">
+        <div class="list-menu over">
+            <ul class="ul">
+                <li><a href="/">Trang chủ</a></li>
+                <li>/</li>
+                <li><a href="/@ViewBag.Meta-@ViewBag.Id" title="@ViewBag.CategoryName">@ViewBag.CategoryName</a></li>
+                <li>/</li>
+                <li class="active"><a href="/chi-tiet/@Model.MetaTitle-@Model.ID" title="@Model.Title">@Model.Title</a></li>
+            </ul>
+        </div>
+        <!-- detail -->
+        <div class="detail">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 dt1">
+                    <div class="item-detail over">
+                        <div class="preview-img"><a href="javacscript:" rel="nofollow" id="preview-link" data-lightbox="gallery"><img src="" class="img-zoom" id="preview-img" alt="" /></a></div>
+                        <div id="product-thumb" class="owl-carousel">
+                            @foreach (var item in ViewBag.Images)
+                            {
+                                <div class="item"><a href="@item"><img src="@item" alt="" class="" /></a></div>
+                            }
+                        </div>
+                    </div>
+                    <link href="/Assets/Client/lightbox.min.css" rel="stylesheet">
+                    <script src="/Assets/Client/jquery.elevateZoom-3.0.8.min.js"></script>
+                    <script src="/Assets/Client/lightbox.min.js"></script>
+                    <script type="text/javascript">
+                        function changePreviewImg(src) {
+                            $('#preview-link').stop(0).attr('href', src);
+                            $('#preview-img').stop(0).hide(0).attr('src', src).fadeIn(300, function () {
+                                $('.zoomContainer').remove();
+                                $('#preview-img').removeData('elevateZoom');
+                                $("#preview-img").elevateZoom({ zoomWindowFadeIn: 500, zoomWindowFadeOut: 0, lensFadeIn: 500, lensFadeOut: 0, scrollZoom: !0, zoomWindowOffetx: 10, lensBorder: 0, containLensZoom: !0, zoomWindowHeight: 420, borderSize: 0, cursor: "crosshair" });
+                            });
+                        }
+                        $(document).ready(function () {
+                            $("#product-thumb").owlCarousel({ autoPlay: 8e5, items: 3, itemsDesktop: [1199, 3], itemsDesktopSmall: [979, 3], itemsTablet: [768, 3], itemsMobile: [479, 2], pagination: !1, responsiveRefreshRate: 200, navigation: !0, beforeInit: function () { $("#product-thumb .item:first-child").addClass("current"), changePreviewImg($("#product-thumb .item:first-child img").attr("src")) } });
+                            $(document).on('click', '#product-thumb .item>a', function (e) {
+                                e.preventDefault();
+                                $('#product-thumb .item').removeClass('current');
+                                $(this).parent('.item').addClass('current');
+                                changePreviewImg($(this).attr('href'));
+                            });
+                        });
+                    </script>
+                </div>
+                <div class="col-xs-12 col-sm-6 dt2">
+                    <div class="list-detail over">
+                        <h1>@Model.Title</h1>
+                        <h2 style="display:none;position: absolute">@Model.MetaTitle</h2>
+                        <h2 style="margin-bottom: 15px;font-size:14px;">Mã SP: @Model.Code</h2>
+                        <label class="red">@(Model.Price.Value.ToString("N0")) đ</label>
+                        <div class="prameter">
+                            @Html.Raw(Model.ShortDesc)
+                        </div>
+                        <a href="javascript:;" class="bg delay" title="">Mua online</a>
+                        <a href="javascript:;" class="bg delay bl" title="">Liên hệ nhận tư vấn</a>
+                    </div>
+                    <div class="popup-prameter popup-1">
+                        <div class="registration">
+                            <span class="close">x</span>
+                            <div class="tit">
+                                <h2>Đăng ký mua online</h2>
+                            </div>
+                            <div class="form-dk">
+                                <form id="BookOnline">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <input type="hidden" name="ContentID" value="8416" />
+                                                <input type="text" class="form-control" name="fullname" placeholder="Họ và Tên (bắt buộc)">
+                                                <label class="radio-inline"><input type="radio" name="Mr" value="Anh" checked>Anh</label>
+                                                <label class="radio-inline"><input type="radio" name="Mr" value="Chị">Chị</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="phone" placeholder="Số điện thoại (bắt buộc)">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="email" placeholder="Email (bắt buộc)">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="5" name="comment" placeholder="Ghi chú khác của quý khách"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <button id="btn-book">Đăng ký ngay <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div style="display:none;" id="alrtBook">
+                                    <p style="background: #21409a;padding:5px 0px;color:#ffffff;padding:10px;margin-top:15px;">Thông tin của bạn đã được gửi, chúng tôi sẽ liên hệ lại với bạn trong 1-2 ngày tới.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="popup-prameter popup-2">
+                        <div class="registration">
+                            <span class="close">x</span>
+                            <div class="tit">
+                                <h2>Đăng ký nhận tư vấn</h2>
+                            </div>
+                            <div class="form-dk">
+                                <form id="Registration">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <input type="hidden" name="ContentID" value="8416" />
+                                                <input type="text" class="form-control" name="fullname" placeholder="Họ và Tên (bắt buộc)">
+                                                <label class="radio-inline"><input type="radio" name="Mr" value="Anh" checked>Anh</label>
+                                                <label class="radio-inline"><input type="radio" name="Mr" value="Chị">Chị</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="phone" placeholder="Số điện thoại (bắt buộc)">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="email" placeholder="Email (bắt buộc)">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="5" name="comment" placeholder="Ghi chú khác của quý khách"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <button id="btn-register">Đăng ký ngay <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div style="display:none;" id="alrt">
+                                    <p style="background: #21409a;padding:5px 0px;color:#ffffff;padding:10px;margin-top:15px;">Thông tin của bạn đã được gửi, chúng tôi sẽ liên hệ lại với bạn trong 1-2 ngày tới.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $("#BookOnline").validate({
+                                rules: {
+                                    fullname: { required: true },
+                                    comment: { required: true },
+                                    phone: { required: true, number: true },
+                                    email: { required: true, email: true, },
+                                },
+                                messages: {
+                                    fullname: { required: "*", },
+                                    comment: { required: "*", },
+                                    phone: { required: "*", number: "*", },
+                                    email: { required: "*", email: "*", },
+                                },
+                                submitHandler: function () {
+                                    var d = $("#BookOnline").serialize();
+                                    $("#btn-book").unbind("click").text("Đang gửi...");
+                                    var url = "/Ajax/Home/BookOnline";
+                                    $.post(url, d, function (msg) {
+                                        if (msg.Erros == false) {
+                                            $('#alrtBook').slideDown();
+                                            setInterval(function () { window.location.reload(); }, 5000);
+                                        } else {
+                                            swal(msg.Title, msg.msg, "error");
+                                            $("#btn-book").text("Gửi đi");
+                                        }
+                                    }, "json");
+                                }
+                            });
+                            $("#Registration").validate({
+                                rules: {
+                                    fullname: { required: true },
+                                    comment: { required: true },
+                                    phone: { required: true, number: true },
+                                    email: { required: true, email: true, },
+                                },
+                                messages: {
+                                    fullname: { required: "*", },
+                                    comment: { required: "*", },
+                                    phone: { required: "*", number: "*", },
+                                    email: { required: "*", email: "*", },
+                                },
+                                submitHandler: function () {
+                                    var d = $("#Registration").serialize();
+                                    $("#btn-register").unbind("click").text("Đang gửi...");
+                                    var url = "/Ajax/Home/Registration";
+                                    $.post(url, d, function (msg) {
+                                        if (msg.Erros == false) {
+                                            //swal(msg.Title, msg.msg, "success"); $("#btn-contact").text("Gửi đi");
+                                            $('#alrt').slideDown();
+                                            setInterval(function () { window.location.href = "/dang-ky-thanh-cong"; }, 2500);
+                                        } else {
+                                            swal(msg.Title, msg.msg, "error");
+                                            $("#btn-register").text("Gửi đi");
+                                        }
+                                    }, "json");
+                                }
+                            });
+                        });
+                    </script>
+                    <script>
+                        $(document).ready(function () {
+                            $(".list-detail a.bg.delay").click(function () {
+                                $(".popup-prameter.popup-1").addClass('show');
+                            });
+                            $(".list-detail a.bg.delay.bl").click(function () {
+                                $(".popup-prameter.popup-2").addClass('show');
+                                $(".popup-prameter.popup-1").removeClass('show');
+                            });
+                        });
+                        $(document).ready(function () {
+                            $(".popup-prameter .close").click(function () {
+                                $(".popup-prameter").removeClass('show');
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="cre-detail oppen-list over">
+                <h3>Mô tả sản phẩm</h3>
+                <div class="desc-sp" id="Desc-sp">
+                    @Html.Raw(Model.Detail)
+                    <div class="active-open">
+                        <div class="on-list text-center">
+                            <a href="javascript:;" class="delay bg on-detail" title="xem thêm">xem thêm</a>
+                        </div>
+                        <div class="on-list text-center hidden on-hidden">
+                            <a href="javascript:;" class="delay bg on-hiden" title="Thu gọn">Thu gọn</a>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        var heit = $('#Desc-sp').height();
+                        if (heit < 400) {
+                            $('.oppen-list').addClass('show-open');
+                            $('.active-open').hide();
+                        }
+                        else {
+                            $('.active-open').show();
+                        }
+                        if ($('.oppen-list').length) {
+                            $('.oppen-list .on-list .on-detail').on('click', function () {
+                                if ($('.oppen-list').hasClass('show-open')) {
+                                    $('.oppen-list').removeClass('show-open');
+                                } else {
+                                    $('.oppen-list').addClass('show-open');
+                                }
+                                $('.on-hidden').removeClass('hidden');
+                            });
+                        }
+                        $('.oppen-list .on-list .on-hiden').on('click', function () {
+                            if ($('.oppen-list').hasClass('show-open')) {
+                                $('.oppen-list').removeClass('show-open');
+                            } else {
+                                $('.oppen-list').addClass('show-open');
+                            }
+                        });
+                    });</script>
+            </div>
+            <div class="cre-detail over">
+                <h3>Sản phẩm tương tự</h3>
+                <div class="slider-cre show-product slider">
+                    @foreach (var item in sameProducts)
+                    {
+                        <div class="item delay" data-id="8395">
+                            <div class="img over">
+                                <a href="/chi-tiet/@item.MetaTitle-@item.ID">
+                                    <img src="@item.Thumb" alt="@item.Title" title="@item.Title" />
+                                </a>
+                            </div>
+                            <div class="spen-product over">
+                                <div class="over">
+                                    <div class="left pull-left">
+                                        <h3><label><b>@item.Title</b></label></h3>
+                                    </div>
+                                    <div class="right pull-right text-right">
+                                        <label class="red">@(item.Price.Value.ToString("N0")) đ</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <script type="text/javascript">
+                var totalSlide2 = 5;
+                if ($(window).width() < 990) {
+                    totalSlide2 = 4;
+                }
+                if ($(window).width() < 500) {
+                    totalSlide2 = 3;
+                }
+                if ($(window).width() > 480) {
+                    $(document).on('ready', function () {
+                        $(".slider-cre").lightSlider({
+                            item: totalSlide2,
+                            pager: false,
+                            slideMargin: 0,
+                            loop: false,
+                            slideMove: 1,
+                            easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+                            speed: 600
+                        });
+                        //$(".slider-cre").slick({
+                        //    slidesToShow: totalSlide2,
+                        //    slidesToScroll: 1,
+                        //    autoplay: false,
+                        //    autoplaySpeed: 2000,
+                        //});
+                    })(jQuery);
+                }</script>
+            <div class="cre-detail over">
+                <h3>bình luận của khách hàng</h3>
+                <div id="CommentDv">
+                    <p style="font-size: 13px;font-style: italic;font-weight: 500"><b>Hiện chưa có bình luận nào. Bạn có thể đưa ra bình luận của mình về sản phẩm theo mẫu dưới đây.</b></p>
+                </div>
+                <div class="send-form over ">
+                    <h4>viết bình luận của bạn</h4>
+                    <div class="row row-s">
+                        <form id="frmRateProduct" novalidate="novalidate">
+                            <div class="col-xs-12 col-sm-4 col-s">
+                                <input type="hidden" value="8416" name="ContentID">
+                                <input type="text" class="form-control" name="FullName" placeholder="Họ tên">
+                                <input type="text" class="form-control" name="Email" placeholder="Email">
+                                <input type="text" class="form-control" name="Mobile" placeholder="Số điện thoại">
+                            </div>
+                            <div class="col-xs-12 col-sm-8 col-s">
+                                <textarea class="form-control" rows="5" name="Content"></textarea>
+                            </div>
+                            <div class="col-xs-12 col-s">
+                                <p>
+                                    <i>(Email và số điện thoại của bạn sẽ được ẩn khi đăng bình luận)</i>
+                                </p>
+                                <p class="text-right">
+                                    <button type="submit" class="btn bg">Đăng Bình luận</button>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- end detail -->
+    </div>
+</div>
+<!-- end main-content -->
+<script>
+    urlPostAction = '/Ajax/RateProduct/RateAction';
+    currentPage = 1;
+    $(function () {
+        Comment("#frmRateProduct");
+    });
+
+    function Comment(form) {
+        $(form).validate({
+            rules: {
+                Content: {
+                    required: true
+                },
+                FullName: {
+                    required: true
+                },
+                Email: {
+                    required: true
+                },
+                Mobile: {
+                    required: true
+                }
+            },
+            messages: {
+                Content: {
+                    required: "Bạn chưa nhập nội dung"
+                },
+                FullName: {
+                    required: "Bạn chưa nhập họ tên"
+                },
+                Email: {
+                    required: "Bạn chưa nhập Email"
+                },
+                Mobile: {
+                    required: "Bạn chưa nhập số điện thoại"
+                }
+            },
+            submitHandler: function () {
+
+                $.post(urlPostAction,
+                    $(form).serialize(),
+                    function (data) {
+                        ChangeRandom();
+                        if (!data.Erros) {
+                            noty({
+                                text: data.Message,
+                                type: 'success',
+                                theme: 'metroui',
+                                layout: 'topRight',
+                                timeout: 1000,
+                                progressBar: true, killer: true,
+                                callback: {
+                                    onClose: function () {
+                                        ClearForm(form);
+                                    }
+                                },
+                                animation: {
+                                    open: 'animated fadeIn',
+                                    close: 'animated fadeOut',
+                                    speed: 200
+                                }
+                            });
+                        }
+                        else
+                            noty({
+                                text: data.Message,
+                                type: 'error',
+                                theme: 'metroui',
+                                layout: 'topRight',
+                                timeout: 3000,
+                                progressBar: true, killer: true,
+                                animation: {
+                                    open: 'animated fadeIn',
+                                    close: 'animated fadeOut',
+                                    speed: 200
+                                }
+                            });
+                    });
+            }
+        });
+    }
+
+    function ChangeRandom() {
+        $("#imageRandom").attr("src", "/showCaptchaImage?width=90&height=26&t=" + new Date().getMilliseconds());
+    }
+
+    function ClearForm(form) {
+        $(form).find("input[type=text][name!=FullName][name!=EmailOrMobile],textarea").each(function () {
+            var input = $(this);
+            input.val("");
+        });
+    }</script>
+<style>
+
+    .item-detail.over .preview-img {
+        height: 430px;
+    }
+
+    .zoomContainer {
+        height: 430px !important;
+    }
+
+    #preview-link {
+        height: 100%;
+    }
+
+    .over h2 {
+        font-weight: normal;
+        line-height: 22px;
+    }
+</style>
+

@@ -1,0 +1,55 @@
+﻿@model List<Model.EF.Project>
+<div class="container">
+    <div class="product customer">
+        <div class="text-center bor-bt">
+            <ul class="nav nav-pills">
+                <li class="active"><a data-toggle="pill" href="/#customer1">Dự án đã thực hiện</a></li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div id="customer1" class="tab-pane fade in active">
+                <div id="dg-container1" class="dg-container w gallery-index">
+                    <div class="dg-wrapper">
+                        @foreach (var item in ViewBag.LastProject)
+                        {
+                            <a href="/@item.MetaTitle-@item.ID" title="@item.Title" class="dg-center" style="opacity: 1; visibility: visible;">
+                                <img src="@item.Image" alt="" title="@item.Title">
+                                <div class="member-home">
+                                    <ul class="ul">
+                                        <li>
+                                            <img src="@item.Image" alt="@item.Title" title="@item.Title ">
+                                        </li>
+                                        <li>
+                                            <p style="width: 240px">@item.Title</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        }
+                        @foreach (var item in Model)
+                        {
+                            <a href="/@item.MetaTitle-@item.ID" title="@item.Title" style="opacity: 1; visibility: visible; transform: translateX(350px) translateZ(-200px) rotateY(0deg); padding-top: 30px;">
+                                <img src="@item.Image" alt="" title="@item.Title">
+                                <div class="member-home">
+                                    <ul class="ul">
+                                        <li>
+                                            <img src="@item.Image" alt="@item.Title" title="@item.Title ">
+                                        </li>
+                                        <li>
+                                            @item.Title
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        }
+                    </div>
+                    <nav>
+                        <span class="dg-prev">&lt;</span>
+                        <span class="dg-next">&gt;</span>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

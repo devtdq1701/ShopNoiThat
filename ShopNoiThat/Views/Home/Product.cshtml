@@ -1,0 +1,71 @@
+﻿@{
+    var NewestProduct = (List<Model.EF.Product>)ViewBag.NewestProduct;
+    var ViewedestProduct = (List<Model.EF.Product>)ViewBag.ViewedestProduct;
+}
+
+<div class="container">
+    <div class="product">
+        <div class="text-center bor-bt">
+            <ul class="nav nav-pills">
+                <li class="active"><a data-toggle="pill" href="/#home">mới nhất</a></li>
+                <li><a data-toggle="pill" href="/#menu1">xem nhiều nhất</a></li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <div class="show">
+                    <div class="row row-s">
+                        @foreach (var item in NewestProduct)
+                        {
+                            <div class="col-xs-12 col-sm-6 col-md-3 col-s">
+                                <div class="item delay w pull-left">
+                                    <div class="img delay w">
+                                        <a href="/chi-tiet/@item.MetaTitle-@item.ID" title="@item.Title">
+                                            <img src="@item.Thumb" title="@item.Title">
+                                        </a>
+                                    </div>
+                                    <div class="seo-oder">
+                                        <div class="seo-left pull-left over">
+                                            <a href="/chi-tiet/@item.MetaTitle-@item.ID">@item.Title</a>
+                                            <span>Mã SP: @item.Code</span>
+                                        </div>
+                                        <div class="seo-right pull-right over">
+                                            <label class="red">@(item.Price.Value.ToString("N0")) đ</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <div class="show">
+                    <div class="row row-s">
+                        @foreach (var item in ViewedestProduct)
+                        {
+                            <div class="col-xs-12 col-sm-6 col-md-3 col-s">
+                                <div class="item delay w pull-left">
+                                    <div class="img delay w">
+                                        <a href="/chi-tiet/@item.MetaTitle-@item.ID" title="@item.Title">
+                                            <img src="@item.Thumb" title="@item.Title">
+                                        </a>
+                                    </div>
+                                    <div class="seo-oder">
+                                        <div class="seo-left pull-left over">
+                                            <a href="/chi-tiet/@item.MetaTitle-@item.ID">@item.Title</a>
+                                            <span>Mã SP: @item.Code</span>
+                                        </div>
+                                        <div class="seo-right pull-right over">
+                                            <label class="red">@(item.Price.Value.ToString("N0")) đ</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

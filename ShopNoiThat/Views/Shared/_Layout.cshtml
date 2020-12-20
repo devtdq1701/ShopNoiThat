@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class=" js csstransforms csstransforms3d csstransitions">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link href="https://nhadep.com.vn/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <meta http-equiv="content-language" content="en">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    @RenderSection("title", required: false)
+    <!--css-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700&amp;subset=vietnamese" rel="stylesheet" />
+    <link href="/Assets/Client/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Assets/Client/fontawesome-pro-5.15.1-web/css/all.min.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/owl.theme.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/owl.transitions.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/jquery.simplyscroll.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/owl.carousel.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/jquery.mmenu.all.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/remodal.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/lightgallery.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/remodal-default-theme.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/jquery.fancybox.min.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/style.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/lightslider.min.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/layout.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/animate.min.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/sweetalert.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/reponsive.css" rel="stylesheet" />
+    @RenderSection("css", required: false)
+    <script type="text/javascript" src="/Assets/Client/js/jquery-2.1.3.min.js"></script>
+    <body>
+        @{Html.RenderAction("MainMenuMobile", "Home"); }
+        <div class="wrapper">
+
+            <!-- header -->
+            <div class="hotline-fixed">
+                <a href="tel:0906264268" title="0906 264 268"><i class="fa fa-phone" aria-hidden="true"></i></a>
+            </div>
+            <div class="header headerxd">
+                <div class="top w">
+
+                </div>
+                <div class="container">
+                    <div class="item-header pull-left w">
+                        <div class="logo pull-left wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
+                            <a href="/" title="Công ty TNHH Thương mại và Nội thất Nhà Đẹp">
+                                <img src="/Assets/Client/img/noi-that-nha-dep.png" alt="Công ty TNHH Thương mại và Nội thất Nhà Đẹp" title="Công ty TNHH Thương mại và Nội thất Nhà Đẹp">
+                            </a>
+                        </div>
+                        <div class="search pull-left wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
+                            <form method="get" action="/tim-kiem" id="formsearch">
+                                <input type="text" name="keyword" class="form-control" placeholder="Tìm kiếm">
+                                <button type="submit" class="btn delay"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+                        <div class="phone-header pull-left wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
+                            <span>Hỗ trợ khách hàng: <a href="tel:0906264268" title="0906 264 268">0906 264 268</a></span>
+                            <span class="mobile">Liên hệ hotline <a href="tel:0906264268" title="0906 264 268">0906 264 268</a> để nhận tư vấn</span>
+                        </div>
+                        <div class="banner wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
+                            <div class="slyder-home owl-carousel3 owl-carousel-top owl-carousel owl-theme" style="opacity: 1; display: block;">
+                                <div class="owl-wrapper-outer">
+                                    <div class="owl-wrapper" style="width: 736px; left: 0px; display: block; transition: all 0ms ease 0s; transform: translate3d(0px, 0px, 0px);">
+                                        <div class="owl-item" style="width: 368px;">
+                                            <div class="item3">
+                                                <a href="/tu-van-thiet-ke" title="Tư vấn thiết kế - thi công nội thất - Nhà Đẹp">
+                                                    <img src="/Assets/Client/img/a12964d6919168cf3180 SUA.jpg" alt="Tư vấn thiết kế - thi công nội thất - Nhà Đẹp" title="Tư vấn thiết kế - thi công nội thất - Nhà Đẹp">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="owl-controls clickable" style="display: none;"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div></div><div class="owl-buttons"><div class="owl-prev">prev</div><div class="owl-next">next</div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu w pull-left fixed">
+                    <div class="container">
+                        <nav id="mainMenu">
+                            @{Html.RenderAction("MainMenu", "Home"); }
+                        </nav>
+                        <button id="button-toggle-menu" class="visible-xs"><i class="fa fa-bars"></i></button>
+                    </div>
+                </div>
+            </div>
+            <!-- end header -->
+            <div class="container marquee">
+                <marquee></marquee>
+            </div>
+            <style>
+
+                .color-red {
+                    color: red;
+                }
+
+                /*.btn-login.google {
+                    background: url(/Content/HTML_Website/images/login-gp.png) 25px center no-repeat #dd1d1b;
+                }
+
+                .btn-login.facebook {
+                    background: url(/Content/HTML_Website/images/login-fb.png) 25px center no-repeat #4765a5;
+                }*/
+
+                .btn-login {
+                    color: #fff !important;
+                    display: block;
+                    padding: 10px 15px 10px 45px;
+                    max-width: 100%;
+                    margin: 10px auto;
+                    font-weight: 600;
+                }
+
+                label.error {
+                    font-size: 12px;
+                    font-weight: normal;
+                    margin-top: 5px;
+                    color: red;
+                    font-style: italic;
+                }
+            </style>
+            @RenderBody()
+            <!-- slyder-home -->
+            <!-- end slyder-home -->
+            <!-- item-home -->
+            @RenderSection("slidetop", required: false)
+            @RenderSection("slidemid", required: false)
+            <!-- end item-home -->
+            <!-- product -->
+            @RenderSection("product", required: false)
+            <!-- end product -->
+            <!-- customer -->
+            @RenderSection("project", required: false)
+            <!-- end customer -->
+            <!-- map -->
+            @RenderSection("map", required: false)
+            @RenderSection("news", required: false)
+            <!-- end map -->
+            <!-- banner item -->
+            @RenderSection("brand", required: false)
+            <!-- end banner item -->
+            <!-- footter -->
+            <div class="footter">
+                <div class="container">
+                    <div class="row row-s">
+                        <div class="col-xs-12 col-md-4 col-s">
+                            <div class="item">
+
+                                <div class="logo">
+                                    <p><a href="/" title="Công ty TNHH Thương mại và Nội thất Nhà Đẹp"><img src="/Assets/Client/img/noi-that-nha-dep.png" alt="Công ty TNHH Thương mại và Nội thất Nhà Đẹp" title="Công ty TNHH Thương mại và Nội thất Nhà Đẹp"></a></p>
+                                </div>
+                                <p><label>Công ty TNHH Thương mại và Nội thất Nhà Đẹp</label></p>
+                                <p>Trụ sở: 02 Chương Dương Độ, Hoàn Kiếm, Hà Nội</p>
+                                <p>Hotline: <span style="color:#2e3192;">0906 264 268</span></p>
+                                <p>Tư vấn thiết kế:<span style="color:#2e3192;"> 093 636 2998</span></p>
+                                <p>Email: <a href="mailto:contact@nhadep.com.vn"><span style="color:#2e3192;">contact@nhadep.com.vn</span></a></p>
+                                <p>Website: <a href="/"><span style="color:#2e3192;">nhadep.com.vn</span></a></p>
+                                <p>Giấy CNĐKKD :&nbsp;0104257842 do sở KHĐT TP HN cấp</p>
+                                <p>Ngày: 17/11/2009 - Sửa đổi lần 8 ngày:18/5/2016</p>
+                                <ul class="ul shade hidden-xs">
+                                    <li><a href="https://www.facebook.com/NoithatnhadepCoLtd/" title="facebook" rel="nofollow" target="_blank"><i class="fab fa-facebook-f delay" aria-hidden="true"></i></a></li>
+                                    <li><a href="https://www.youtube.com/c/noithatnhadep" title="youtube" rel="nofollow" target="_blank"><i class="fab fa-youtube delay" aria-hidden="true"></i></a></li>
+                                    <li><a href="https://www.instagram.com/noi_that_nha_dep/" title="Instagram" rel="nofollow" target="_blank"><i class="fab fa-instagram delay" aria-hidden="true"></i></a></li>
+                                    <li><a href="http://online.gov.vn/HomePage/CustomWebsiteDisplay.aspx?DocId=38921" style="width: 100px;" title="Đã thông báo bộ công thương" rel="nofollow" target="_blank"><img src="/Assets/Client/img/logo-da-thong-bao-voi-bo-cong-thuong.png" alt="Đã thông báo bộ công thương" title="Đã thông báo bộ công thương"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-8 col-s">
+                            <div class="row row-s">
+                                <div class="col-xs-12 col-sm-4 col-s">
+                                    <div class="item">
+                                        <h3 class="hidden-xs">Về chúng tôi</h3>
+                                        <h3 class="visible-xs collapsed" data-toggle="collapse" data-target="#footer-collapse1080">Về chúng tôi <i class="fa fa-angle-down"></i></h3>
+                                        <ul class="ul collapse" id="footer-collapse1080">
+                                            <li><a href="/gioi-thieu" title="Giới thiệu"><i class="fa fa-caret-right" aria-hidden="true"></i>Giới thiệu</a></li>
+                                            <li><a href="/he-thong-cua-hang" title="Hệ thống cửa hàng"><i class="fa fa-caret-right" aria-hidden="true"></i>Hệ thống cửa hàng</a></li>
+                                            <li><a href="/blog-tu-van" title="Tin tức"><i class="fa fa-caret-right" aria-hidden="true"></i>Tin tức</a></li>
+                                            <li><a href="/thiet-ke-thi-cong" title="Gallery"><i class="fa fa-caret-right" aria-hidden="true"></i>Gallery</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-s">
+                                    <div class="item">
+                                        <h3 class="hidden-xs">Khuyến mại</h3>
+                                        <h3 class="visible-xs collapsed" data-toggle="collapse" data-target="#footer-collapse7">Khuyến mại <i class="fa fa-angle-down"></i></h3>
+                                        <ul class="ul collapse" id="footer-collapse7">
+                                            <li><a href="/khuyen-mai" title="Sản phẩm khuyến mại"><i class="fa fa-caret-right" aria-hidden="true"></i>Sản phẩm khuyến mại</a></li>
+                                            <li><a href="/chuong-trinh-km" title="Tin tức khuyến mại"><i class="fa fa-caret-right" aria-hidden="true"></i>Tin tức khuyến mại</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-s">
+                                    <div class="item">
+                                        <h3 class="hidden-xs">Dịch vụ khách hàng</h3>
+                                        <h3 class="visible-xs collapsed" data-toggle="collapse" data-target="#footer-collapse17">Dịch vụ khách hàng <i class="fa fa-angle-down"></i></h3>
+                                        <ul class="ul collapse" id="footer-collapse17">
+                                            <li><a href="/clb-khach-hang-than-thiet" title="CLB khách hàng thân thiết"><i class="fa fa-caret-right" aria-hidden="true"></i>CLB khách hàng thân thiết</a></li>
+                                            <li><a href="/thanh-toan" title="Thanh toán"><i class="fa fa-caret-right" aria-hidden="true"></i>Thanh toán</a></li>
+                                            <li><a href="/doi-hang" title="Đổi hàng"><i class="fa fa-caret-right" aria-hidden="true"></i>Đổi hàng</a></li>
+                                            <li><a href="/van-chuyen" title="Vận chuyển và lắp đặt"><i class="fa fa-caret-right" aria-hidden="true"></i>Vận chuyển và lắp đặt</a></li>
+                                            <li><a href="/bao-hanh-bao-tri" title="Bảo hành/ bảo trì"><i class="fa fa-caret-right" aria-hidden="true"></i>Bảo hành/ bảo trì</a></li>
+                                            <li><a href="/chinh-sach-bao-mat-thong-tin" title="Bảo mật thông tin"><i class="fa fa-caret-right" aria-hidden="true"></i>Bảo mật thông tin</a></li>
+                                            <li><a href="/hoi-dap" title="Hỏi/ đáp"><i class="fa fa-caret-right" aria-hidden="true"></i>Hỏi/ đáp</a></li>
+                                            <li><a href="/chinh-sach-va-quy-dinh-chung" title="Chính sách &amp; Quy định chung"><i class="fa fa-caret-right" aria-hidden="true"></i>Chính sách &amp; Quy định chung</a></li>
+                                        </ul>
+                                    </div>
+                                    <br>
+                                    <img src="/Assets/Client/img/bocongthuong.png" style="display: none" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <p>Copyright @@ 2020 by Nha Dep  - All right</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end footter -->
+            <a href="/#" class="delay gotop"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+            <script src="/Assets/Client/js/bootstrap.min.js"></script>
+            <script src="/Assets/Client/js/jquery.mmenu.min.all.js"></script>
+            <script src="/Assets/Client/js/jquery.validate.min.js"></script>
+            <script src="/Assets/Client/js/LoadData.js"></script>
+            <script src="/Assets/Client/js/owl.carousel.min.js"></script>
+            <script src="/Assets/Client/js/remodal.min.js"></script>
+            <script src="/Assets/Client/js/naoTooltips.js"></script>
+            <script src="/Assets/Client/js/modernizr.custom.53451.js"></script>
+            <script src="/Assets/Client/js/jquery.gallery.js"></script>
+            <script src="/Assets/Client/js/jquery.fancybox.min.js"></script>
+            <script src="/Assets/Client/js/lightslider.min.js"></script>
+            <script src="/Assets/Client/js/slick.min.js"></script>
+            <script src="/Assets/Client/js/sweetalert.min.js"></script>
+            <script src="/Assets/Client/js/jquery2.validate.min.js"></script>
+            <script src="/Assets/Client/js/javascript.js"></script>
+            <script src="/Assets/Client/js/wow.min.js"></script>
+            <script src="/Assets/Client/js/cart.js"></script>
+            <script src="/Assets/Client/js/jquery.noty.packaged.min.js"></script>
+            <script type="text/javascript">
+                (function () {
+                    $(window).scroll(function () {
+                        if ($(window).scrollTop() === 0) {
+                            $('.gotop').stop(false, true).fadeOut(600);
+                        } else {
+                            $('.gotop').stop(false, true).fadeIn(600);
+                        }
+                    });
+                    $('.gotop').click(function () {
+                        $('body,html').animate({ scrollTop: 0 }, 400);
+                        return false;
+                    });
+                })(jQuery);
+                if ($(window).width() < 768) {
+                    $('.menu-new,.news-left-item').appendTo('.main-content');
+                }</script>
+            <script>new WOW().init();</script>
+            @RenderSection("js", required: false)
+    </body>
+</html>

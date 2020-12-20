@@ -1,0 +1,126 @@
+﻿@model PagedList.IPagedList<Model.EF.Product>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section title{
+    <title>@ViewBag.KeyWord</title>
+}
+<div id="content">
+    <div class="container">
+        <div class="tbl">
+            <div class="tbl-cell main-content">
+                <div class="clearfix">
+                    <div id="loadpage">
+                        <div class="mess-search"><strong>@(ViewBag.totalRecord)</strong> <span>Kết quả: @ViewBag.Keyword</span></div>
+                        @if (ViewBag.totalRecord > 0)
+                        {
+                            string keyword = ViewBag.Keyword;
+                            <div class="design-list">
+                                <div class="row row-s">
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 col-s">
+                                            <div class="design design-big">
+                                                <div class="img img-cover over">
+                                                    <a href="/chi-tiet/@item.MetaTitle-@item.ID" title="@item.Title">
+                                                        <img src="@item.Thumb" alt="@item.Title" title="@item.Title" />
+                                                    </a>
+                                                </div>
+                                                <h3><a href="/chi-tiet/@item.MetaTitle-@item.ID" title="@item.Title">@item.Title</a></h3>
+                                            </div>
+                                        </div>
+                                    }
+                                    </div>
+                                <div class="text-center">
+                                    <ul class="pagination">
+                                        @Html.PagedListPager(Model, page => Url.Action("Search",
+new { page,keyword}), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                            <style>
+                                .design.design-big .img img {
+                                    width: 100%;
+                                    -webkit-transition: all 0.2s linear;
+                                    -moz-transition: all 0.2s linear;
+                                    -o-transition: all 0.2s linear;
+                                    -ms-transition: all 0.2s linear;
+                                    transition: all 0.2s linear;
+                                }
+
+                                .design.design-big .img:hover img {
+                                    -webkit-transform: scale(1.1,1.1);
+                                    -moz-transform: scale(1.1,1.1);
+                                    -o-transform: scale(1.1,1.1);
+                                    -ms-transform: scale(1.1,1.1);
+                                    transform: scale(1.1,1.1);
+                                }
+
+                                .design.design-big h3 a {
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                    color: #333;
+                                    display: block;
+                                    padding-top: 7px;
+                                }
+
+                                .design.design-big .img {
+                                    height: 190px;
+                                }
+
+                                .design.design-big {
+                                    margin-bottom: 15px;
+                                }
+
+                                @@media screen and (max-width: 767px) {
+                                    .design.design-big .img {
+                                        height: auto;
+                                    }
+
+                                        .design.design-big .img img {
+                                            height: auto;
+                                        }
+                                }
+                            </style>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .box-search {
+        width: 100%;
+    }
+    /*.search{ width:100%; }*/
+    .search .item.product {
+        width: 18%;
+        float: left;
+        margin: 0px 10px;
+    }
+    /*.list-search-news ul{
+    list-style:none;
+
+        }*/
+    #content.cost-estimate-content .list-search-news ul li {
+        line-height: 1.8em;
+    }
+
+    .mess-search {
+        padding: 10px 0px;
+    }
+
+    .search-filter input {
+        margin: 0px 4px;
+    }
+
+    .title-with-small h1 {
+        text-transform: uppercase;
+        font-size: 23px;
+        margin-bottom: 12px;
+    }
+</style>

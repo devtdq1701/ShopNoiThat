@@ -1,0 +1,31 @@
+﻿@model List<Model.EF.News>
+<div class="container news product">
+    <div class="text-center bor-bt">
+        <ul class="nav nav-pills">
+            <li class="active"><a data-toggle="pill" href="https://nhadep.com.vn/">Cẩm nang nhà đẹp</a></li>
+        </ul>
+    </div>
+    <div class="slider-news-2">
+        <div class="slider">
+            @foreach (var item in Model)
+            {
+                <div class="item">
+                    <a href="/@item.MetaTitle-@item.ID" t title="@item.Title" class="avt">
+                        <img src="@item.Image" a="" title="@item.Title">
+                    </a>
+                    <div class="txt">
+                        <div class="ico">
+                            <span>@item.CreatedDate.Value.Day.ToString()</span>
+                            <small>@item.CreatedDate.Value.ToString("MMM")</small>
+                        </div>
+                        <div class="text">
+                            <h3><a href="/@item.MetaTitle-@item.ID" title="@item.Title">@item.Title</a></h3>
+                            <span>by Nhà Đẹp, in Blog tư vấn</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <script>$(document).ready(function () { $(".slider-news-2 .slider").lightSlider({ item: 3, loop: !1, pager: !1, controls: !0, slideMove: 2, slideMargin: 20, easing: "cubic-bezier(0.25, 0, 0.25, 1)", speed: 600, responsive: [{ breakpoint: 800, settings: { item: 2, slideMove: 1, slideMargin: 6 } }, { breakpoint: 480, settings: { item: 1, slideMove: 1 } }] }) });</script>
+</div>

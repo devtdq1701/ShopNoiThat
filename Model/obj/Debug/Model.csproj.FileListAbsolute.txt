@@ -1,0 +1,12 @@
+C:\Users\Katar\source\repos\ShopNoiThat\Model\bin\Debug\Model.dll.config
+C:\Users\Katar\source\repos\ShopNoiThat\Model\bin\Debug\Model.dll
+C:\Users\Katar\source\repos\ShopNoiThat\Model\bin\Debug\Model.pdb
+C:\Users\Katar\source\repos\ShopNoiThat\Model\bin\Debug\EntityFramework.dll
+C:\Users\Katar\source\repos\ShopNoiThat\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Katar\source\repos\ShopNoiThat\Model\bin\Debug\EntityFramework.xml
+C:\Users\Katar\source\repos\ShopNoiThat\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Katar\source\repos\ShopNoiThat\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\Katar\source\repos\ShopNoiThat\Model\obj\Debug\Model.csproj.CopyComplete
+C:\Users\Katar\source\repos\ShopNoiThat\Model\obj\Debug\Model.dll
+C:\Users\Katar\source\repos\ShopNoiThat\Model\obj\Debug\Model.pdb
+C:\Users\Katar\source\repos\ShopNoiThat\Model\obj\Debug\Model.csprojAssemblyReference.cache

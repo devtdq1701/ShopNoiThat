@@ -1,0 +1,54 @@
+﻿@model List<Model.EF.ProductCategory>
+<nav id="mainMenuMobile" class="mm-menu mm-pageshadow mm-offcanvas">
+    <div class="mm-panel mm-hasnavbar mm-opened mm-current mm-hassearch" id="mm-1">
+        <div class="mm-search"><input placeholder="Tìm kiếm các mục..." type="text" autocomplete="off"></div><div class="mm-navbar"><a class="mm-title">MENU</a></div><div class="mm-noresultsmsg">Không có mục nào!</div><ul class="mainMenu ul mm-listview mm-first mm-last">
+    <li class="logo-menu">
+        <a href="/" title="Công ty TNHH Thương mại và Nội thất Nhà Đẹp">
+            <img src="/Assets/Client/img/noi-that-nha-dep.png" alt="Công ty TNHH Thương mại và Nội thất Nhà Đẹp" title="Công ty TNHH Thương mại và Nội thất Nhà Đẹp" />
+        </a>
+    </li>
+    @foreach (var item in Model.Where(x => x.ParentID == null))
+    {
+        <li>
+            <a class="mm-next" href="/#mm-@item.ID" data-target="#mm-@item.ID"></a><a href="/@item.MetaTitle-@item.ID" title="@item.Title">
+                @item.Title
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </a>
+        </li>
+    }
+    <li>
+        <a href="https://nhadep.com.vn/thiet-ke-noi-that" title="Thiết kế nội thất">
+            Thiết kế nội thất
+        </a>
+    </li>
+    <li>
+        <a href="https://nhadep.com.vn/blog-tu-van" title="Blog tư vấn">
+            Blog tư vấn
+        </a>
+    </li>
+</ul>
+    </div>
+    @foreach (var item in Model.Where(x => x.ParentID == null))
+    {
+        var child = Model.Where(x => x.ParentID == item.ID);
+        <div class="sub mm-panel mm-hasnavbar mm-hidden mm-hassearch" id="mm-@item.ID">
+            <div class="mm-noresultsmsg">Không có mục nào!</div><div class="mm-search"><input placeholder="Tìm kiếm các mục..." type="text" autocomplete="off"></div><div class="mm-navbar">
+                <a class="mm-btn mm-prev" href="/#mm-1" data-target="#mm-1"></a><a class="mm-title" href="https://nhadep.com.vn/#mm-1">
+                    @item.Title
+
+                </a>
+            </div>
+            <div class="sub-left">
+                <div class="item">
+                    <ul class="ul mm-listview">
+                        @foreach (var childItem in child)
+                        {
+                            <li><a href="/@childItem.MetaTitle-@childItem.ID" title="@childItem.Title">@childItem.Title</a></li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+</nav>

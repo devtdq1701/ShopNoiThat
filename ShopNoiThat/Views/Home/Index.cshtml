@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="display: none">
+    <h1>Nội thất Nhà đẹp | Thương hiệu nội thất uy tín từ năm 1999</h1>
+</div>
+@section title{
+    <title>Nội thất Nh&#224; Đẹp l Thương hiệu nội thất uy t&#237;n từ năm 1999</title>
+}
+@section brand{
+    @{Html.RenderAction("Brand", "Home"); }
+}
+@section news{
+    @{Html.RenderAction("News", "Home"); }
+}
+@section map{
+    <div class="container">
+        <div class="map over">
+            <p><img src="/Assets/Client/img/dia-chi-bg.jpg" title="Địa chỉ" alt="Địa chỉ"></p>
+            <div class="item text-center">
+                <h2>Địa chỉ</h2>
+                <p><font face="tahoma, geneva, sans-serif">Click nút dưới đây để xem địa chỉ cửa hàng Nội thất Nhà Đẹp</font></p>
+                <p><a class="delay" href="/he-thong-cua-hang">hệ thống cửa hàng</a></p>
+            </div>
+        </div>
+    </div>
+}
+@section project{
+    @{Html.RenderAction("Project", "Home"); }
+}
+@section product{
+    @{Html.RenderAction("Product", "Home"); }
+}
+@section slidetop{
+    @{Html.RenderAction("SlideTop", "Home"); }
+}
+@section slidemid{
+    @{Html.RenderAction("SlideMid", "Home"); }
+}

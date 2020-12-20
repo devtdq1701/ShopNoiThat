@@ -1,0 +1,48 @@
+﻿@{
+    var Truoc = (List<Model.EF.Banner>)ViewBag.Truoc;
+    var Giua = (List<Model.EF.Banner>)ViewBag.Giua;
+    var Sau = (List<Model.EF.Banner>)ViewBag.Sau;
+
+}
+<div class="item-home">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                @foreach (var item in Truoc)
+                {
+                    <div class="slyder-item owl-carousel3 pull-left w wow">
+                        <div class="item3">
+                            <a href="@item.Link">
+                                <img src="@item.Image" alt="@item.Title" title="@item.Title">
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                @foreach (var item in Giua)
+                {
+                    <div class="slyder-item owl-carousel3 pull-left w wow">
+                        <div class="item3">
+                            <a href="@item.Link">
+                                <img src="@item.Image" alt="@item.Title" title="@item.Title">
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                @foreach (var item in Sau)
+                {
+                    <div class="slyder-item owl-carousel3 pull-left w wow">
+                        <div class="item3">
+                            <a href="@item.Link">
+                                <img src="@item.Image" alt="@item.Title" title="@item.Title">
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

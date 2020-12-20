@@ -1,0 +1,14 @@
+﻿@model List<Model.EF.Banner>
+
+    <div class="_slide">
+        <div class="slyder-home owl-carousel3 pull-left w slider-home">
+            @foreach (var item in Model)
+            {
+                <div class="item3 img-cover">
+                    <a href="@item.Link" title="@item.Title">
+                        <img src="@item.Image" alt="@item.Title">
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
