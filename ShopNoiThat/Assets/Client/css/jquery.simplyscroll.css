@@ -54,7 +54,7 @@
 .menu { position: relative; height: 32px; background: #21409a; z-index: 9; }
     .menu.fixed { position: fixed; top: 0; height: auto; }
     .menu nav > ul > li { width: calc(100%/7); }
-        .menu nav > ul > li > a { font-weight: bold; color: white; text-transform: uppercase; font-family: "Roboto", sans-serif; text-align: center; line-height: 1; position: relative; background: url(../images/a.png)no-repeat; background-position: right; display: block; padding: 9px 27px; -moz-transition: ease 0.5s; -o-transition: ease 0.5s; -webkit-transition: ease 0.5s; transition: ease 0.5s; font-size: 16px; }
+        .menu nav > ul > li > a { font-weight: bold; color: white; text-transform: uppercase; font-family: "Roboto", sans-serif; text-align: center; line-height: 1; position: relative; background: url(../img/a.png)no-repeat; background-position: right; display: block; padding: 9px 27px; -moz-transition: ease 0.5s; -o-transition: ease 0.5s; -webkit-transition: ease 0.5s; transition: ease 0.5s; font-size: 16px; }
             .menu nav > ul > li > a:before { content: ""; width: 0; height: 2px; background: #ffff00; left: 50%; -moz-transition: ease 0.5s; -o-transition: ease 0.5s; -webkit-transition: ease 0.5s; transition: ease 0.5s; position: absolute; bottom: 1px; }
             .menu nav > ul > li > a:after { content: ""; width: 0; height: 2px; background: #ffff00; left: 50%; -moz-transition: ease 0.5s; -o-transition: ease 0.5s; -webkit-transition: ease 0.5s; transition: ease 0.5s; position: absolute; bottom: 1px; }
         .menu nav > ul > li:hover > a:before, .menu > nav > ul > li:hover > a:after { width: 100%; }

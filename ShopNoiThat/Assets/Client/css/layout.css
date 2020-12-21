@@ -572,8 +572,8 @@ input[type=radio] { position: relative; outline: none !important; }
 .text-banner, div.col-xs-12.col-sm-6.mg-bt h2 { font-weight: normal; line-height: 20px; }
 
 #team .lSAction { display: block !important; }
-    #team .lSAction > .lSPrev { background-image: url(../images/pre2.png) !important; background-position: center !important; background-repeat: no-repeat; border: 1px solid #929292; }
-    #team .lSAction > .lSNext { background-image: url(../images/next2.png) !important; background-position: center !important; background-repeat: no-repeat; border: 1px solid #929292; }
+    #team .lSAction > .lSPrev { background-image: url(../img/pre2.png) !important; background-position: center !important; background-repeat: no-repeat; border: 1px solid #929292; }
+    #team .lSAction > .lSNext { background-image: url(../img/next2.png) !important; background-position: center !important; background-repeat: no-repeat; border: 1px solid #929292; }
 ._process1 .tbl .tbl-cell { vertical-align: middle; }
 .hotline-mobile { display: none; }
 

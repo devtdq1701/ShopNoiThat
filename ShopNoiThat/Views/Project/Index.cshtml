@@ -1,0 +1,411 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var ChungCu = (List<Model.EF.Project>)ViewBag.ChungCu;
+    var BietThu = (List<Model.EF.Project>)ViewBag.BietThu;
+    var Team = (List<Model.EF.Member>)ViewBag.Team;
+    var News = (List<Model.EF.News>)ViewBag.News;
+}
+@section title{
+    <title>Tư vấn thiết kế nội thất l Nội thất Nh&#224; Đẹp uy t&#237;n từ 1999</title>
+}
+<!-- slyder-home -->
+<div class="_slide">
+    <div class="slyder-home owl-carousel3 pull-left w slider-home">
+        <div class="item3 img-cover">
+            <a title="Banner tư vấn thiết kế">
+                <img src="/Assets/Client/img/slide-thiet-ke-noi-that-3.jpg" alt="Banner tư vấn thiết kế" title="Banner tư vấn thiết kế">
+            </a>
+        </div>
+        <div class="item3 img-cover">
+            <a title="Banner tư vấn thiết kế">
+                <img src="/Assets/Client/img/slide-thiet-ke-noi-that-2.jpg" alt="Banner tư vấn thiết kế" title="Banner tư vấn thiết kế">
+            </a>
+        </div>
+    </div>
+</div>
+<!-- main-content -->
+<div class="container">
+    <div class="main-content">
+        <div class="list-menu over">
+            <ul class="ul">
+                <li><a href="/">Trang chủ</a></li>
+                <li>/</li>
+
+                <li class="active"><a href="#" title="Thiết kế nội thất">Thiết kế nội thất</a></li>
+            </ul>
+        </div>
+        <!-- design -->
+        <div class="design">
+            <h1 style="display:none;">Thiết kế nội thất</h1>
+            <h2 style="display:none;position: absolute">Thiết kế nội thất</h2>
+            <div class="text-center">
+                <ul class="ul ul-tab">
+                    <li class="active"><a href="#about" class="srol">Về ch&#250;ng t&#244;i</a></li>
+                    <li class=""><a href="#project" class="srol">Dự &#225;n</a></li>
+                    <li class=""><a href="#Report" class="srol">Quy tr&#236;nh thiết kế</a></li>
+                    <li class=""><a href="#contact" class="srol">Li&#234;n hệ tư vấn v&#224; b&#225;o gi&#225;</a></li>
+                    <li class=""><a href="#team" class="srol">Đội ngũ</a></li>
+                    <li class=""><a href="#HandBook" class="srol">Cẩm nang nh&#224; đẹp</a></li>
+                </ul>
+            </div>
+            <div class="design-list">
+                <div id="about">
+                    <div class="title text-center">
+                        <h2>Về ch&#250;ng t&#244;i</h2>
+                    </div>
+                    <div class="row row-s">
+                        <div class="col-xs-12 col-sm-6 col-s">
+                            <div class="banner over">
+                                <img src="/Assets/Client/img/BG.jpg" alt="BG.jpg" title="VỀ CH&#218;NG T&#212;I">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-s">
+                            <div class="text-banner content-ab">
+                                <p style="text-align: justify;"><strong>Bạn&nbsp;muốn làm mới không gian sống của mình&nbsp;mang đậm phong cách cá nhân?&nbsp;Bạn đau đầu trong việc chọn lựa thiết kế và đơn vị thi công? Đừng lo lắng, Nội Thất Nhà Đẹp sẽ giúp bạn sở hữu một không gian ấm cúng, tiện nghi như bạn hằng mong muốn. &nbsp;</strong></p>
+
+                                <p style="text-align: justify;">Nội Thất Nhà Đẹp, thương hiệu nội thất uy tín từ năm 1999. Chúng tôi cung cấp các giải pháp tư vấn thiết kế, thi công, lắp đặt hoàn thiện mọi thiết bị cho tổ ấm của khách hàng. Với tác phong chuyên nghiệp, tận tâm, chúng tôi đem đến cho khách hàng một không gian sống hiện đại, sang trọng với các sản phẩm cao cấp và dịch vụ hoàn hảo,</p>
+
+                                <p style="text-align: justify;">Với chúng tôi, kinh doanh đồ nội thất không chỉ là bán cho khách hàng một sản phẩm mang tính vật chất, mà trên hết đó là giá trị tinh thần. Mỗi món đồ chứa đựng toàn bộ tâm huyết, nhiệt tình, khiến khách hàng luôn có cảm giác thoải mái, ấm cúng mỗi khi trở về.</p>
+
+                                <p style="text-align: justify;">Còn chần chờ gì mà không đến với Nhà Đẹp để tự mình trải nghiệm những điều tuyệt vời nhất. Chúng tôi luôn sẵn sàng chào đón bạn.</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="project">
+                    <div class="title text-center">
+                        <h2>Dự &#225;n</h2>
+                    </div>
+                    <div class="tab-project text-center">
+                        <ul class="nav nav-pills ul">
+                            <li class="active"><a data-toggle="pill" href="#home">Chung cư</a></li>
+                            <li class=""><a data-toggle="pill" href="#villa">Biệt thự</a></li>
+                            <li class=""><a data-toggle="pill" href="#townhouse">Nh&#224; phố</a></li>
+                        </ul>
+                        <div class="tab-content text-left">
+                            <div id="home" class="tab-pane fade in active">
+                                <div class="list-project slider">
+                                    @foreach (var item in ChungCu)
+                                    {
+                                        <div class="item more">
+                                            <div class="over">
+                                                <div class="img over">
+                                                    <a href="/thiet-ke/@item.MetaTitle-@item.ID" title="@item.Title"><img src="@item.Image" alt=""></a>
+                                                </div>
+                                                <div class="item-right">
+                                                    <div class="dt">
+                                                        <h3><a href="/thiet-ke/@item.MetaTitle-@item.ID" title="@item.Title">@item.Title</a></h3>
+                                                        <div class="desc">
+                                                            @item.ShortDesc
+                                                        </div>
+                                                        <a href="/thiet-ke/@item.MetaTitle-@item.ID" title="@item.Title" class="xemct">Xem chi tiết</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                    <p class="text-center" style="clear:both;padding-top:30px;">
+                                        <a class="loadMore bg" title="xem thêm">Xem thêm</a>
+                                        <a class="notMore bg" title="Thu gọn">Thu gọn</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div id="villa" class="tab-pane fade ">
+                                <div class="list-project slider">
+                                    @foreach (var item in BietThu)
+                                    {
+                                        <div class="item more">
+                                            <div class="over">
+                                                <div class="img over">
+                                                    <a href="/thiet-ke/@item.MetaTitle-@item.ID" title="@item.Title"><img src="@item.Image" alt=""></a>
+                                                </div>
+                                                <div class="item-right">
+                                                    <div class="dt">
+                                                        <h3><a href="/thiet-ke/@item.MetaTitle-@item.ID" title="@item.Title">@item.Title</a></h3>
+                                                        <div class="desc">
+                                                            @item.ShortDesc
+                                                        </div>
+                                                        <a href="/thiet-ke/@item.MetaTitle-@item.ID" title="@item.Title" class="xemct">Xem chi tiết</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                    <p class="text-center" style="clear:both;padding-top:30px;">
+                                        <a class="loadMore bg" title="xem thêm">Xem thêm</a>
+                                        <a class="notMore bg" title="Thu gọn">Thu gọn</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div id="townhouse" class="tab-pane fade ">
+                                <div class="list-project slider">
+                                    <p class="text-center" style="clear:both;padding-top:30px;">
+                                        <a class="loadMore bg" title="xem thêm">Xem thêm</a>
+                                        <a class="notMore bg" title="Thu gọn">Thu gọn</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            var ttsl = 3;
+                            if ($(window).width() < 990 && $(window).width() >= 500) {
+                                ttsl = 2;
+                            }
+                            if ($(window).width() < 500) {
+                                ttsl = 1;
+                            }
+                            $(document).on('ready', function () {
+                                $("#home .slider-project").slick({ slidesToShow: ttsl, slidesToScroll: 1, autoplay: false, autoplaySpeed: 2000, });
+                            })
+                            $('.nav-pills a[data-toggle="pill"]').on('shown.bs.tab', function (e) {
+                                var $target = $($(this).attr('href'));
+                                $target.find(".slider-project").slick({ slidesToShow: ttsl, slidesToScroll: 1, autoplay: false, autoplaySpeed: 2000, });
+                            });
+                            $(document).ready(function () {
+                                $('.list-project .loadMore').click(function (e) {
+                                    $(this).parents("div.list-project").find(".item").removeClass('more');
+                                    $(this).hide();
+                                    $(this).next('a.notMore').show()
+                                    e.preventDefault();
+                                });
+                                $('.list-project .notMore').click(function (e) {
+                                    $(this).parents("div.list-project").find(".item").addClass('more');
+                                    $(this).hide();
+                                    $(this).prev('a.loadMore').show()
+                                    e.preventDefault();
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div id="Report">
+                    <div class="title text-center">
+                        <h2 style="font-weight: 700">Quy tr&#236;nh thiết kế</h2>
+                    </div>
+                    <div class="detail-report">
+                        <p style="text-align: center;"><img alt="Quy trình thiết kế nội thất của Nhà Đẹp" src="/Assets/Client/img/Quy-trinh-thiet-ke-450x381.jpg" style="width: 450px;" /><img alt="Quy trình thi công nội thất của Nhà Đẹp" src="/Assets/Client/img/quy-trinh-thi-cong-500x330.jpg" style="width: 500px;" /></p>
+
+                    </div>
+                </div>
+                <div id="contact">
+                    <div class="title text-center">
+                        <h2>Li&#234;n hệ tư vấn v&#224; b&#225;o gi&#225;</h2>
+                    </div>
+                    <div class="form-over over">
+                        <div class="row row-s">
+                            <form id="contact-form">
+                                <div class="col-xs-12 col-sm-6 col-s">
+                                    <div class="img" style="border:none;"><img src="/Assets/Client/img/bao-gia-thiet-ke.jpg" alt="Li&#234;n hệ tư vấn v&#224; b&#225;o gi&#225;" title="Li&#234;n hệ tư vấn v&#224; b&#225;o gi&#225;" /></div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-s">
+                                    <p class="text-center"> <span style="margin-right: 20px"><label>Điện thoại liên hệ: </label> 093 636 2998</span> <span><label style=" margin-right: 5px;"> Email: </label>contact@nhadep.com.vn</span></p>
+                                    <div class="row row-s mg-btw">
+                                        <div class="col-xs-12 col-sm-2 col-s">
+                                            <label>Họ và tên</label>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-10 col-s">
+                                            <input type="text" name="FullName" id="FullName" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row row-s mg-btw">
+                                        <div class="col-xs-12 col-sm-2 col-s">
+                                            <label>Điện thoại</label>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-10 col-s">
+                                            <input type="text" name="Mobile" id="Mobile" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row row-s mg-btw">
+                                        <div class="col-xs-12 col-sm-2 col-s">
+                                            <label>Email</label>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-10 col-s">
+                                            <input type="text" name="Email" id="Email" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row row-s mg-btw">
+                                        <div class="col-xs-12 col-sm-2 col-s">
+                                            <label>Nội dung</label>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-10 col-s">
+                                            <textarea class="form-control" name="Comment" rows="5" id="Comment"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row row-s mg-btw">
+                                        <div class="col-xs-12 col-sm-10 col-sm-offset-2 col-s" style="margin-bottom:10px;text-align:right;">
+                                            <button type="submit" id="btn-contact" class="btn bg">Gửi</button>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-10 col-sm-offset-2 col-s" style="display:none;" id="alrt">
+                                            <p style="background: #2d3192;padding:5px 0px;color:#ffffff;">Thông tin của bạn đã được gửi, chúng tôi sẽ liên hệ lại với bạn trong 1-2 ngày tới.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    jQuery(document).ready(function () {
+                        jQuery('.design ul.ul li a.srol[href^="#"]').click(function (e) {
+                            jQuery('html,body').animate({ scrollTop: jQuery(this.hash).offset().top }, 1000);
+                            $('.design ul.ul.ul-tab li').removeClass("active");
+                            $(this).parent('li').addClass("active");
+                            return false;
+                            e.preventDefault();
+                        });
+                    });
+                </script>
+                <div id="team">
+                    <div class="title text-center">
+                        <h2 style="font-weight: 700">Đội ngũ</h2>
+                    </div>
+                    <div class="list-team">
+                        @foreach (var item in Team)
+                        {
+                            <div class="item text-center">
+                                <div class="img over">
+                                    <a href="javascript:" title="@item.Name">
+                                        <img src="@item.Avatar" alt="" title="@item.Name">
+                                    </a>
+                                </div>
+                                <h3>@item.Name</h3>
+                                <span>@item.Job</span>
+                                <p>
+                                    <a href="mailto:contact@nhadep.com.vn" title="contact@nhadep.com.vn">
+                                        <img src="/Assets/Client/img/mail.png" alt="contact@nhadep.com.vn" title="https://www.facebook.com/NoithatnhadepCoLtd/" />
+                                    </a>
+                                    <a href="https://www.facebook.com/NoithatnhadepCoLtd/" target="_blank" title="https://www.facebook.com/NoithatnhadepCoLtd/">
+                                        <img src="/Assets/Client/img/fb.png" alt="https://www.facebook.com/NoithatnhadepCoLtd/" title="https://www.facebook.com/NoithatnhadepCoLtd/" />
+                                    </a>
+                                </p>
+                                <div class="spen text-justify">
+                                    <p style="text-align: center;"><em>@item.Slogan</em></p>
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <link href="/Assets/Client/css/lightslider.min.css" rel="stylesheet" />
+                <script src="/Assets/Client/js/lightslider.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        var item = 3;
+                        var wid = $(window).width();
+                        if (wid < 768) {
+                            item = 1;
+                        }
+                        $(".list-team").lightSlider({
+                            item: item,
+                            pager: false,
+                            slideMargin: 0,
+                            loop: false,
+                            slideMove: 1,
+                            controls: true,
+                            easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+                            speed: 600
+                        });
+                    });
+                </script>
+                <div id="HandBook">
+                    <div class="title text-center">
+                        <h2>Cẩm nang nh&#224; đẹp</h2>
+                    </div>
+                    <div class="slider-news slider">
+                        @foreach (var item in News)
+                        {
+                            <div class="item">
+                                <div class="img over">
+                                    <a href="/bai-viet/@item.MetaTitle-@item.ID" title="@item.Title">
+                                        <img src="@item.Image" alt="" title="@item.Title">
+                                    </a>
+                                </div>
+                                <div class="spen-item over">
+                                    <span class="nur">
+                                        <label>@item.CreatedDate.Value.Day.ToString()</label>@item.CreatedDate.Value.ToString("MMM")
+                                    </span>
+                                    <h4><a href="/bai-viet/@item.MetaTitle-@item.ID" title="@item.Title">@item.Title</a></h4>
+                                    <p><span>by</span> Nh&#224; Đẹp, <span>in</span> Blog tư vấn</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <script type="text/javascript">
+                        var items = 3;
+                        if ($(window).width() < 990) {
+                            items = 3;
+                        }
+                        if ($(window).width() < 500) {
+                            items = 1;
+                        }
+                        $(document).ready(function () {
+                            $(".slider-news").slick({
+                                slidesToShow: items,
+                                slidesToScroll: 1,
+                                autoplay: false,
+                                autoplaySpeed: 2000,
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+        <!-- end design -->
+    </div>
+</div>
+<!-- end main-content -->
+<script>
+    $(document).ready(function () {
+        $("#contact-form").validate({
+            rules: {
+                FullName: { required: true },
+                Comment: { required: true },
+                Mobile: { required: true, number: true },
+                Email: { required: true, email: true, },
+            },
+            messages: {
+                FullName: { required: "*", },
+                Comment: { required: "*", },
+                Mobile: { required: "*", number: "*", },
+                Email: { required: "*", email: "*", },
+            },
+            submitHandler: function () {
+                var d = $("#contact-form").serialize();
+                $("#btn-contact").unbind("click").text("Đang gửi...");
+                var url = "/Project/SendContact";
+                $.post(url, d, function (msg) {
+                    if (msg.Erros == false) {
+                        //swal(msg.Title, msg.msg, "success"); $("#btn-contact").text("Gửi đi");
+                        $('#alrt').slideDown();
+                        setInterval(function () { window.location.reload(); }, 5000);
+                    } else {
+                        swal(msg.Title, msg.msg, "error");
+                        $("#btn-contact").text("Gửi đi");
+                    }
+                }, "json");
+            }
+        });
+    });
+</script>
+<style>
+    #contact-form .col-sm-10 {
+        position: relative;
+    }
+
+    #contact-form label.error {
+        position: absolute;
+        top: 5px;
+        right: -5px;
+    }
+
+    .text-banner h2, .text-banner h3, #service h2, #service h3, .content-ab h1, .content-ab h2, .content-ab h3, .content-ab h4, .content-ab h5 {
+        font-weight: normal;
+        line-height: 20px !important;
+    }
+</style>
+

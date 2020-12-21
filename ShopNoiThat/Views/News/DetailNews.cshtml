@@ -1,0 +1,142 @@
+﻿@model Model.EF.News
+@{
+    ViewBag.Title = "DetailNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Category = (List<Model.EF.Category>)ViewBag.Category;
+    var NewProduct = (List<Model.EF.Product>)ViewBag.NewProduct;
+    var News = (List<Model.EF.News>)ViewBag.News;
+}
+@section title{
+    <title>@Model.Title</title>
+}
+<div id="breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fa fa-home color-green"></i></a></li>
+            <li><a href="/blog-tu-van">Blog tư vấn</a></li>
+
+        </ol>
+    </div>
+</div>
+<!-- main-content -->
+<div class="container">
+    <div class="main-content">
+        <div class="list-menu over">
+            <ul class="ul">
+                <li><a href="/" title="Trang chủ">Trang chủ</a></li>
+                <li>/</li>
+
+                <li class="active"><a href="#" title="Blog tư vấn">Blog tư vấn</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <div class="menu-new over">
+                    <h3>các chủ đề</h3>
+                    <h2 style="display: none">các chủ đề</h2>
+                    <ul class="ul">
+                        @foreach (var item in Category)
+                        {
+                            <li><a href="/tu-van/@item.MetaTitle-@item.ID" title="@item.Title">@item.Title</a></li>
+                        }
+                    </ul>
+                </div>
+
+
+                <div class="news-left-item item-left over">
+                    <h3>Sản phẩm mới</h3>
+                    <ul class="ul">
+                        @foreach (var item in NewProduct)
+                        {
+                            <li class="w over">
+                                <div class="img over pull-left">
+                                    <a href="/chi-tiet/@item.MetaTitle-@item.ID" title="@item.Title">
+                                        <img src="@item.Thumb" alt="@item.Title">
+                                    </a>
+                                </div>
+                                <div class="text-item pull-left">
+                                    <a href="/chi-tiet/@item.MetaTitle-@item.ID" title="@item.Title">@item.Title</a>
+                                    <span>Mã: @item.Code</span>
+                                    <label>@(item.Price.Value.ToString("N0"))</label>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <div class="detail-news show-tab">
+                    <h1 class="none" style="display: none; position: absolute">@Model.Title</h1>
+                    <div class="show">
+                        <div class="item">
+                            <div class="img over">
+                                <a href="">
+                                    <img src="@Model.Image" alt="" title="@Model.Title">
+                                </a>
+                            </div>
+                            <div class="spen-item over">
+                                <span class="nur"><label>@Model.CreatedDate.Value.Day.ToString()</label>@Model.CreatedDate.Value.ToString("MMM")</span>
+                                <h2><a href="/bai-viet/@Model.MetaTitle-@Model.ID" title="@Model.Title">@Model.Title</a></h2>
+                                <p><span>By:</span> Nh&#224; Đẹp, <span>In:</span> Blog tư vấn</p>
+                            </div>
+                            @Html.Raw(Model.ContentHtml)
+
+                            <div style="border-top: 1px solid #ccc; padding-top: 10px; clear: both;">
+                                <div class="share-this">
+                                    <div>
+                                        <span>Share this:</span>
+                                        <div class="addthis_inline_share_toolbox"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="new-bottom over">
+                    <h3>CÓ THỂ BẠN QUAN TÂM</h3>
+                    <div class="slider-news slider">
+                        @foreach (var item in News)
+                        {
+                            <div class="item">
+                                <div class="img over">
+                                    <a href="/bai-viet/@item.MetaTitle-@item.ID" title="@item.Title">
+                                        <img src="@item.Image" alt="" title="@item.Title">
+                                    </a>
+                                </div>
+                                <div class="spen-item over">
+                                    <span class="nur">
+                                        <label>@item.CreatedDate.Value.Day.ToString()</label>@item.CreatedDate.Value.ToString("MMM")
+                                    </span>
+                                    <h4><a href="/bai-viet/@item.MetaTitle-@item.ID" title="@item.Title">@item.Title</a></h4>
+                                    <p><span>by</span> Nh&#224; Đẹp, <span>in</span> Blog tư vấn</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <script type="text/javascript">
+                        var items = 3;
+                        if ($(window).width() < 990) {
+                            items = 3;
+                        }
+                        if ($(window).width() < 500) {
+                            items = 1;
+                        }
+                        $(document).ready(function () {
+                            $(".slider-news").slick({
+                                slidesToShow: items,
+                                slidesToScroll: 1,
+                                autoplay: false,
+                                autoplaySpeed: 2000,
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

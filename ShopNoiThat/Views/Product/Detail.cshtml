@@ -65,7 +65,9 @@
                         <h2 style="margin-bottom: 15px;font-size:14px;">Mã SP: @Model.Code</h2>
                         <label class="red">@(Model.Price.Value.ToString("N0")) đ</label>
                         <div class="prameter">
-                            @Html.Raw(Model.ShortDesc)
+                            <ul>
+                                @Html.Raw(Model.ShortDesc)
+                            </ul>
                         </div>
                         <a href="javascript:;" class="bg delay" title="">Mua online</a>
                         <a href="javascript:;" class="bg delay bl" title="">Liên hệ nhận tư vấn</a>
@@ -81,25 +83,25 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="hidden" name="ContentID" value="8416" />
-                                                <input type="text" class="form-control" name="fullname" placeholder="Họ và Tên (bắt buộc)">
-                                                <label class="radio-inline"><input type="radio" name="Mr" value="Anh" checked>Anh</label>
-                                                <label class="radio-inline"><input type="radio" name="Mr" value="Chị">Chị</label>
+                                                <input type="hidden" name="ProductID" value="@Model.ID" />
+                                                <input type="text" class="form-control" name="FullName" placeholder="Họ và Tên (bắt buộc)">
+                                                <label class="radio-inline"><input type="radio" name="Sex" value="1" checked>Anh</label>
+                                                <label class="radio-inline"><input type="radio" name="Sex" value="0">Chị</label>
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="phone" placeholder="Số điện thoại (bắt buộc)">
+                                                <input type="text" class="form-control" name="Mobile" placeholder="Số điện thoại (bắt buộc)">
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="email" placeholder="Email (bắt buộc)">
+                                                <input type="text" class="form-control" name="Email" placeholder="Email (bắt buộc)">
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <textarea class="form-control" rows="5" name="comment" placeholder="Ghi chú khác của quý khách"></textarea>
+                                                <textarea class="form-control" rows="5" name="Note" placeholder="Ghi chú khác của quý khách"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
@@ -124,25 +126,25 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="hidden" name="ContentID" value="8416" />
-                                                <input type="text" class="form-control" name="fullname" placeholder="Họ và Tên (bắt buộc)">
-                                                <label class="radio-inline"><input type="radio" name="Mr" value="Anh" checked>Anh</label>
-                                                <label class="radio-inline"><input type="radio" name="Mr" value="Chị">Chị</label>
+                                                <input type="hidden" name="ProductID" value="@Model.ID" />
+                                                <input type="text" class="form-control" name="FullName" placeholder="Họ và Tên (bắt buộc)">
+                                                <label class="radio-inline"><input type="radio" name="Sex" value="1" checked>Anh</label>
+                                                <label class="radio-inline"><input type="radio" name="Sex" value="0">Chị</label>
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="phone" placeholder="Số điện thoại (bắt buộc)">
+                                                <input type="text" class="form-control" name="Mobile" placeholder="Số điện thoại (bắt buộc)">
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="email" placeholder="Email (bắt buộc)">
+                                                <input type="text" class="form-control" name="Email" placeholder="Email (bắt buộc)">
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <textarea class="form-control" rows="5" name="comment" placeholder="Ghi chú khác của quý khách"></textarea>
+                                                <textarea class="form-control" rows="5" name="Note" placeholder="Ghi chú khác của quý khách"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
@@ -160,27 +162,27 @@
                         $(document).ready(function () {
                             $("#BookOnline").validate({
                                 rules: {
-                                    fullname: { required: true },
-                                    comment: { required: true },
-                                    phone: { required: true, number: true },
-                                    email: { required: true, email: true, },
+                                    FullName: { required: true },
+                                    Note: { required: true },
+                                    Mobile: { required: true, number: true },
+                                    Email: { required: true, email: true, },
                                 },
                                 messages: {
-                                    fullname: { required: "*", },
-                                    comment: { required: "*", },
-                                    phone: { required: "*", number: "*", },
-                                    email: { required: "*", email: "*", },
+                                    FullName: { required: "*", },
+                                    Note: { required: "*", },
+                                    Mobile: { required: "*", number: "*", },
+                                    Email: { required: "*", email: "*", },
                                 },
                                 submitHandler: function () {
                                     var d = $("#BookOnline").serialize();
                                     $("#btn-book").unbind("click").text("Đang gửi...");
-                                    var url = "/Ajax/Home/BookOnline";
+                                    var url = "/Product/BookOnline";
                                     $.post(url, d, function (msg) {
                                         if (msg.Erros == false) {
                                             $('#alrtBook').slideDown();
                                             setInterval(function () { window.location.reload(); }, 5000);
                                         } else {
-                                            swal(msg.Title, msg.msg, "error");
+                                            swal(msg.Title, msg.msg, "success");
                                             $("#btn-book").text("Gửi đi");
                                         }
                                     }, "json");
@@ -188,28 +190,28 @@
                             });
                             $("#Registration").validate({
                                 rules: {
-                                    fullname: { required: true },
-                                    comment: { required: true },
-                                    phone: { required: true, number: true },
-                                    email: { required: true, email: true, },
+                                    FullName: { required: true },
+                                    Note: { required: true },
+                                    Mobile: { required: true, number: true },
+                                    Email: { required: true, email: true, },
                                 },
                                 messages: {
-                                    fullname: { required: "*", },
-                                    comment: { required: "*", },
-                                    phone: { required: "*", number: "*", },
-                                    email: { required: "*", email: "*", },
+                                    FullName: { required: "*", },
+                                    Note: { required: "*", },
+                                    Mobile: { required: "*", number: "*", },
+                                    Email: { required: "*", email: "*", },
                                 },
                                 submitHandler: function () {
                                     var d = $("#Registration").serialize();
                                     $("#btn-register").unbind("click").text("Đang gửi...");
-                                    var url = "/Ajax/Home/Registration";
+                                    var url = "/Product/Registration";
                                     $.post(url, d, function (msg) {
                                         if (msg.Erros == false) {
                                             //swal(msg.Title, msg.msg, "success"); $("#btn-contact").text("Gửi đi");
                                             $('#alrt').slideDown();
                                             setInterval(function () { window.location.href = "/dang-ky-thanh-cong"; }, 2500);
                                         } else {
-                                            swal(msg.Title, msg.msg, "error");
+                                            swal(msg.Title, msg.msg, "success");
                                             $("#btn-register").text("Gửi đi");
                                         }
                                     }, "json");
@@ -311,7 +313,7 @@
                     totalSlide2 = 3;
                 }
                 if ($(window).width() > 480) {
-                    $(document).on('ready', function () {
+                    $(document).ready(function () {
                         $(".slider-cre").lightSlider({
                             item: totalSlide2,
                             pager: false,
@@ -327,7 +329,7 @@
                         //    autoplay: false,
                         //    autoplaySpeed: 2000,
                         //});
-                    })(jQuery);
+                    });
                 }</script>
             <div class="cre-detail over">
                 <h3>bình luận của khách hàng</h3>
@@ -339,8 +341,7 @@
                     <div class="row row-s">
                         <form id="frmRateProduct" novalidate="novalidate">
                             <div class="col-xs-12 col-sm-4 col-s">
-                                <input type="hidden" value="8416" name="ContentID">
-                                <input type="text" class="form-control" name="FullName" placeholder="Họ tên">
+                                <input type="text" class="form-control" name="Name" placeholder="Họ tên">
                                 <input type="text" class="form-control" name="Email" placeholder="Email">
                                 <input type="text" class="form-control" name="Mobile" placeholder="Số điện thoại">
                             </div>
@@ -366,7 +367,7 @@
 </div>
 <!-- end main-content -->
 <script>
-    urlPostAction = '/Ajax/RateProduct/RateAction';
+    urlPostAction = '/Product/RateProduct/';
     currentPage = 1;
     $(function () {
         Comment("#frmRateProduct");
@@ -378,7 +379,7 @@
                 Content: {
                     required: true
                 },
-                FullName: {
+                Name: {
                     required: true
                 },
                 Email: {
@@ -392,7 +393,7 @@
                 Content: {
                     required: "Bạn chưa nhập nội dung"
                 },
-                FullName: {
+                Name: {
                     required: "Bạn chưa nhập họ tên"
                 },
                 Email: {
@@ -403,9 +404,9 @@
                 }
             },
             submitHandler: function () {
-
+                var d = $(form).serialize();
                 $.post(urlPostAction,
-                    $(form).serialize(),
+                    d,
                     function (data) {
                         ChangeRandom();
                         if (!data.Erros) {

@@ -193,7 +193,9 @@
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -10798,20 +10800,30 @@
     <Content Include="Assets\Client\fontawesome-pro-5.15.1-web\webfonts\fa-light-300.svg" />
     <Content Include="Assets\Client\fontawesome-pro-5.15.1-web\webfonts\fa-regular-400.svg" />
     <Content Include="Assets\Client\fontawesome-pro-5.15.1-web\webfonts\fa-solid-900.svg" />
+    <Content Include="Assets\Client\img\a.png" />
     <Content Include="Assets\Client\img\a12964d6919168cf3180 SUA.jpg" />
+    <Content Include="Assets\Client\img\bao-gia-thiet-ke.jpg" />
+    <Content Include="Assets\Client\img\BG.jpg" />
     <Content Include="Assets\Client\img\bocongthuong.png" />
     <Content Include="Assets\Client\img\bong.png" />
     <Content Include="Assets\Client\img\checkbox.png" />
     <Content Include="Assets\Client\img\dia-chi-bg.jpg" />
     <Content Include="Assets\Client\img\dow.png" />
+    <Content Include="Assets\Client\img\fb.png" />
     <Content Include="Assets\Client\img\i.png" />
     <Content Include="Assets\Client\img\km.png" />
     <Content Include="Assets\Client\img\logo-da-thong-bao-voi-bo-cong-thuong.png" />
+    <Content Include="Assets\Client\img\mail.png" />
     <Content Include="Assets\Client\img\next.png" />
     <Content Include="Assets\Client\img\next2.png" />
     <Content Include="Assets\Client\img\noi-that-nha-dep.png" />
     <Content Include="Assets\Client\img\pre.png" />
     <Content Include="Assets\Client\img\pre2.png" />
+    <Content Include="Assets\Client\img\quy-trinh-thi-cong-500x330.jpg" />
+    <Content Include="Assets\Client\img\Quy-trinh-thiet-ke-450x381.jpg" />
+    <Content Include="Assets\Client\img\slide-thiet-ke-noi-that-2.jpg" />
+    <Content Include="Assets\Client\img\slide-thiet-ke-noi-that-3.jpg" />
+    <Content Include="Assets\Client\img\thiet-ke-thi-cong-footer-837x106.jpg" />
     <Content Include="Assets\Client\img\tich.png" />
     <Content Include="Assets\Client\jquery.elevateZoom-3.0.8.min.js" />
     <Content Include="Assets\Client\js\bootstrap.min.js" />
@@ -11188,6 +11200,12 @@
     <Content Include="Views\Home\SlideMid.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Product\Search.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\News\Category.cshtml" />
+    <Content Include="Views\News\DetailNews.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Project\DetailProject.cshtml" />
+    <Content Include="Views\Product\Category.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

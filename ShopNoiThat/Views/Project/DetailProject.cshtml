@@ -1,0 +1,83 @@
+﻿@model Model.EF.Project
+@{
+    ViewBag.Title = "DetailProject";
+    var Project = (List<Model.EF.Project>)ViewBag.Project;
+}
+@section title{
+    <title>@Model.Title</title>
+}
+<div id="breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fa fa-home color-green"></i></a></li>
+            <li><a href="/thiet-ke-noi-that" title="@ViewBag.CategoryName">@ViewBag.CategoryName</a></li>
+        </ol>
+    </div>
+</div>
+<div id="content" class="news-detail">
+    <div class="container">
+        <div class="tbl">
+            <div class="tbl-cell">
+                <h1>@Model.Title </h1>
+                <h2 style="display:none;position: absolute">@Model.Title</h2>
+                @Html.Raw(Model.Content)
+            </div>
+
+            <script type="text/javascript">
+                var ttl = 3;
+                if ($(window).width() < 990 && $(window).width() >= 500) {
+                    ttl = 2;
+                }
+                if ($(window).width() < 500) {
+                    ttl = 1;
+                }
+                $(document).ready(function () {
+                    $(".slider-project").slick({
+                        slidesToShow: ttl,
+                        slidesToScroll: 1,
+                        autoplay: false,
+                        autoplaySpeed: 2000,
+                    });
+                });
+            </script>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="new-bottom over">
+                    <h3>CÓ THỂ BẠN QUAN TÂM</h3>
+                    <div class="slider-news slider">
+                        @foreach (var item in Project)
+                        {
+                            <div class="item">
+                                <div class="img over">
+                                    <a href="/thiet-ke/@item.MetaTitle-@item.ID" title="@item.Title">
+                                        <img src="@item.Image" alt="" title="@item.Title">
+                                    </a>
+                                </div>
+                                <div class="spen-item over">
+                                    <span class="nur">
+                                        <label>@item.CreatedDate.Value.Day.ToString()</label>@item.CreatedDate.Value.ToString("MMM")
+                                    </span>
+                                    <h4><a href="/thiet-ke/@item.MetaTitle-@item.ID" title="@item.Title">@item.Title</a></h4>
+                                    <p><span>by</span> Nh&#224; Đẹp, <span>in</span> @ViewBag.CategoryName</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <script type="text/javascript">
+                        var items = 3;
+                        if ($(window).width() < 990) { items = 3; }
+                        if ($(window).width() < 500) { items = 1; }
+                        $(document).ready(function () {
+                            $(".slider-news").slick({ slidesToShow: items, slidesToScroll: 1, autoplay: false, autoplaySpeed: 2000, });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

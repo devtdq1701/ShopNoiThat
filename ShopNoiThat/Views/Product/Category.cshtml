@@ -1,0 +1,142 @@
+﻿@model PagedList.IPagedList<Model.EF.Product>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var CatgoryList = (List<Model.EF.ProductCategory>)ViewBag.CatgoryList;
+}
+
+<!-- main-content -->
+<div class="container">
+    <div class="main-content">
+        <div class="list-menu over">
+            <ul class="ul">
+                <li><a href="/">Trang chủ</a></li>
+                <li>/</li>
+                <li class="active"><a href="/@ViewBag.Meta-@ViewBag.Id" title="@ViewBag.Category">@ViewBag.Category</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-9 pull-right">
+                <div class="show-main">
+                    <h1>@ViewBag.Category</h1>
+                    <h2 style="display: none">@ViewBag.Category</h2>
+                    <div class="show-product">
+                        <div class="row">
+
+                            <div class="col-xs-12">
+                                <div class="item item-banner">
+                                    <div class="img over">
+                                        <a href="#" title="Sofa da">
+                                            <img src="@ViewBag.Banner" alt="@ViewBag.Category" title="@ViewBag.Category">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bor">
+                            <div class="row row-0">
+                                <div class="col-xs-12 col-0 text-right">
+                                    <div class="dropdown">
+                                        <button class="btn dropdown-toggle text-left" type="button" data-toggle="dropdown">Sắp xếp theo <span class="caret"></span></button>
+                                        <ul class="dropdown-menu text-left" id="select-order-price">
+                                            <li>@Html.ActionLink("Giá (Thấp - cao)", "Category", new { sortOrder = "1" })</li>
+                                            <li>@Html.ActionLink("Giá (Cao - thấp)", "Category", new { sortOrder = "2" })></li>
+                                        </ul>
+                                        <input type="hidden" id="seolink-type" value="sofa-da-phong-khach" />
+                                    </div>
+                                </div>
+                                <div class="page-pro">
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="col-xs-12 col-sm-6 col-md-4 col-0">
+                                            <div class="item delay">
+                                                <div class="img over">
+                                                    <a href="/chi-tiet/@item.MetaTitle-@item.ID">
+
+                                                        <img src="@item.Thumb" alt="" title="@item.Title">
+                                                    </a>
+                                                </div>
+                                                <div class="spen-product over">
+                                                    <div class="over">
+                                                        <div class="left pull-left">
+                                                            <h3><label><a href="/chi-tiet/@item.MetaTitle-@item.ID" title="@item.Title">@item.Title</a></label></h3>
+                                                        </div>
+                                                        <div class="right pull-right text-right">
+                                                            <label>@item.Price.Value.ToString("N0") đ</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="hv over delay">
+                                                        <ul class="ul">
+                                                            <li>Mã sản phẩm : <span>@item.Code</span></li>
+                                                            @Html.Raw(item.ShortDesc)
+                                                            <li>Tình trạng : <span class="red">C&#242;n h&#224;ng</span></li>
+                                                        </ul>
+                                                        <a href="/chi-tiet/@item.MetaTitle-@item.ID" class="delay bg" title="@item.Title">Xem chi tiết</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    <div class="col-xs-12 col-s">
+                                        <ul class="pagination">
+                                            @Html.PagedListPager(Model, page => Url.Action("Category",
+new { page,sortOrder= ViewBag.CurrentSort}), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-xs-12 col-0" style="padding: 0 10px">
+                                    <div class="over" style="border: 1px solid #ccc; margin-top: 10px; padding: 10px;">
+                                        <a href="/tu-van-thiet-ke">
+                                            <img src="/Assets/Client/img/thiet-ke-thi-cong-footer-837x106.jpg" alt="Banner chan trang - thiet ke thi cong noi that" title="Banner chan trang - thiet ke thi cong noi that" class="w">
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="item-left">
+                    <h3>SẢN PHẨM</h3>
+                    <ul class="ul accordion">
+                        @foreach (var item in CatgoryList)
+                        {
+                            <li class="">
+                                <a href="/@item.MetaTitle-@item.ID" class="link" style="" title="@item.Title">@item.Title</a>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end main-content -->
+<script type="text/javascript">
+    $(".ul.ul-color a").click(function () {
+        if ($(this).hasClass("choose")) {
+            $(this).removeClass("choose");
+            $(this).next().prop("checked", false);
+            return false;
+        }
+
+        $(".ul.ul-color input").not($(this).next()).prop("checked", false);
+        $(this).next().prop("checked", true);
+
+        $(".ul.ul-color a").not($(this)).removeClass("choose");
+        $(this).addClass("choose");
+    });
+</script>
+<style type="text/css">
+    .check ul.ul-color li a.choose {
+        border: 1px solid #000;
+    }
+</style>
+

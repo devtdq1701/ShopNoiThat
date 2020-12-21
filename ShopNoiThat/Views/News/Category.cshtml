@@ -1,0 +1,154 @@
+﻿@model PagedList.IPagedList<Model.EF.News>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Category = (List<Model.EF.Category>)ViewBag.Category;
+    var NewProduct = (List<Model.EF.Product>)ViewBag.NewProduct;
+    var News = (List<Model.EF.News>)ViewBag.News;
+}
+@section title{
+    <title>Tư vấn thiết kế, chọn đồ nội thất @ViewBag.CategoryName | Nội Th&#226;t Nh&#224; Đẹp</title>
+}
+<div class="container">
+    <div class="main-content">
+        <div class="list-menu over">
+            <ul class="ul">
+                <li><a href="/" title="Trang chủ">Trang chủ</a></li>
+                <li>/</li>
+
+                <li class="active"><a href="#" title="Blog tư vấn">Blog tư vấn</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-3">
+                <div class="menu-new over">
+                    <h3>các chủ đề</h3>
+                    <h2 style="display: none">các chủ đề</h2>
+                    <ul class="ul">
+                        @foreach (var item in Category)
+                        {
+                            <li><a href="/tu-van/@item.MetaTitle-@item.ID" title="@item.Title">@item.Title</a></li>
+                        }
+                    </ul>
+                </div>
+
+
+                <div class="news-left-item item-left over">
+                    <h3>Sản phẩm mới</h3>
+                    <ul class="ul">
+                        @foreach (var item in NewProduct)
+                        {
+                            <li class="w over">
+                                <div class="img over pull-left">
+                                    <a href="/chi-tiet/@item.MetaTitle-@item.ID" title="@item.Title">
+                                        <img src="@item.Thumb" alt="@item.Title">
+                                    </a>
+                                </div>
+                                <div class="text-item pull-left">
+                                    <a href="/chi-tiet/@item.MetaTitle-@item.ID" title="@item.Title">@item.Title</a>
+                                    <span>Mã: @item.Code</span>
+                                    <label>@(item.Price.Value.ToString("N0"))</label>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+
+            </div>
+            <div class="col-xs-12 col-sm-9">
+                <div class="show-tab show-tab-2">
+                    <div id="home">
+                        <div class="show">
+                            <h1 style="font-size: 24px; font-weight: 300; margin-bottom: 10px; text-transform: uppercase">Blog tư vấn</h1>
+                            <h2 style="display: none">Blog tư vấn</h2>
+                            <div id="List-News">
+                                @foreach (var item in Model)
+                                {
+                                    <div class="item">
+                                        <div class="img over">
+                                            <a href="/bai-viet/@item.MetaTitle-@item.ID" title="@item.Title">
+                                                <img src="@item.Image" alt="" title="@item.Title">
+                                            </a>
+                                        </div>
+                                        <div class="spen-item over">
+                                            <span class="nur"><label>@item.CreatedDate.Value.Day.ToString()</label>@item.CreatedDate.Value.ToString("MMM")</span>
+                                            <h2><a href="/bai-viet/@item.MetaTitle-@item.ID" title="@item.Title">@item.Title</a></h2>
+                                            <p><span>by</span> Nh&#224; Đẹp, <span>in</span> </p>
+                                            <p>
+                                                @item.ShortDesc
+                                            </p>
+                                            <a href="/bai-viet/@item.MetaTitle-@item.ID" title="@item.Title" class="delay">Đọc tiếp</a>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="item">
+                                    <ul class="pagination">
+                                        @Html.PagedListPager(Model, page => Url.Action("Search",
+new { page}), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                                    </ul>
+                                </div>
+
+                                <div class="" style="margin-top: 10px;margin:0 -10px;">
+                                    <div class="col-xs-12 col-0" style="padding: 0 10px">
+                                        <div class="over" style="border: 1px solid #ccc; margin-top: 10px; padding: 10px;">
+                                            <a href="/tu-van-thiet-ke">
+                                                <img src="/Assets/Client/img/thiet-ke-thi-cong-footer-837x106.jpg" alt="Banner chan trang - thiet ke thi cong noi that" title="Banner chan trang - thiet ke thi cong noi that" class="w">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="new-bottom over">
+                    <h3>Có thể bạn quan tâm</h3>
+                    <div class="slider-news slider">
+                        @foreach (var item in News)
+                        {
+                            <div class="item">
+                                <div class="img over">
+                                    <a href="/bai-viet/@item.MetaTitle-@item.ID" title="@item.Title">
+                                        <img src="@item.Image" alt="" title="@item.Title">
+                                    </a>
+                                </div>
+                                <div class="spen-item over">
+                                    <span class="nur">
+                                        <label>@item.CreatedDate.Value.Day.ToString()</label>@item.CreatedDate.Value.ToString("MMM")
+                                    </span>
+                                    <h4><a href="/bai-viet/@item.MetaTitle-@item.ID" title="@item.Title">@item.Title</a></h4>
+                                    <p><span>by</span> Nh&#224; Đẹp, <span>in</span> Blog tư vấn</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <script src="/Assets/Client/js/lightslider.min.js"></script>
+                    <script type="text/javascript">
+                        var items = 3;
+                        if ($(window).width() < 990) {
+                            items = 3;
+                        }
+                        if ($(window).width() < 500) {
+                            items = 1;
+                        }
+                        $(document).ready(function () {
+                            $(".slider-news").slick({
+                                slidesToShow: items,
+                                slidesToScroll: 1,
+                                autoplay: false,
+                                autoplaySpeed: 2000,
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

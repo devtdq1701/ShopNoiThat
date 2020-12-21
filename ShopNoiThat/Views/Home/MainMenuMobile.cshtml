@@ -10,7 +10,7 @@
     @foreach (var item in Model.Where(x => x.ParentID == null))
     {
         <li>
-            <a class="mm-next" href="/#mm-@item.ID" data-target="#mm-@item.ID"></a><a href="/@item.MetaTitle-@item.ID" title="@item.Title">
+            <a class="mm-next" href="/#mm-@item.ID" data-target="#mm-@item.ID"></a><a href="#" title="@item.Title">
                 @item.Title
                 <i class="fa fa-caret-down" aria-hidden="true"></i>
             </a>
